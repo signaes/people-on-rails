@@ -3,7 +3,9 @@ require 'test_helper'
 class PersonTest < ActiveSupport::TestCase
   def setup
     @person = Person.new name: 'Testable',
-                         email: 'testable@mail.com'
+                         email: 'testable@mail.com',
+                         password: '123456',
+                         password_confirmation: '123456'
   end
 
   test 'should be valid' do
@@ -54,5 +56,15 @@ class PersonTest < ActiveSupport::TestCase
     @person.email = mixed_case_email
     @person.save
     assert_equal mixed_case_email.downcase, @person.reload.email
+  end
+
+  test 'password should be present (nonblank)' do
+    @person.password = @person.password_confirmation = ' ' * 6
+    assert_not @person.valid?
+  end
+
+  test 'password should have a minimum length of 6 chars' do
+    @person.password = @person.password_confirmation = 'a' * 5
+    assert_not @person.valid?
   end
 end

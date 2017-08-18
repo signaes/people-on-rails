@@ -48,4 +48,10 @@ class PersonTest < ActiveSupport::TestCase
     @person.save
     assert_not duplicate_person.valid?
   end
+
+  test 'email should be transformed to downcase before saving' do
+    @person.email.upcase!
+    @person.save
+    assert_equal @person.email, @person.email.downcase
+  end
 end

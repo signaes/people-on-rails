@@ -9,6 +9,10 @@
   </head>
 
   <body>
+    <% flash.each do |message_type, message| %>
+      <%= content_tag(:div, message, class: "notification notification--#{message_type}") %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

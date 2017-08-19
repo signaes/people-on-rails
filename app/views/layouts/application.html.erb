@@ -13,6 +13,8 @@
       <%= content_tag(:div, message, class: "notification notification--#{message_type}") %>
     <% end %>
 
+    <%= render 'layouts/header' %>
+
     <%= yield %>
   </body>
 </html>

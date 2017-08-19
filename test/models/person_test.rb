@@ -2,10 +2,12 @@ require 'test_helper'
 
 class PersonTest < ActiveSupport::TestCase
   def setup
+    clear_people
+
     @person = Person.new name: 'Testable',
                          email: 'testable@mail.com',
-                         password: '123456',
-                         password_confirmation: '123456'
+                         password: 'password',
+                         password_confirmation: 'password'
   end
 
   test 'should be valid' do

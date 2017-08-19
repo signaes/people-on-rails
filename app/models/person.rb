@@ -11,6 +11,12 @@ class Person < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: true
 
+  def Person.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
+
   private
 
   def downcase_email

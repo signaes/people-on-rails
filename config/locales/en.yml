@@ -33,5 +33,19 @@ en:
   hello: "Hello world"
   signup:
     title: 'Sign up'
+    link: 'Sign up'
     submit: 'Create my account'
     success_message: 'You have successfully signed up'
+  login:
+    title: 'Log in'
+    link: 'Log in'
+    submit: 'Log in'
+    signup_message: 'New here?'
+    signup_link: 'Sign up'
+    error_message: 'Invalid email/password combination'
+    success_message: 'You have successfully logged in'
+  logout:
+    link: 'Log out'
+  person:
+    profile:
+      link: 'Profile'

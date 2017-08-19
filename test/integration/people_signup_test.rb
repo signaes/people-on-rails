@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class PeopleSignupTest < ActionDispatch::IntegrationTest
+  def setup
+    clear_people
+  end
+
   test 'should not sign up without email' do
     get signup_path
 
@@ -30,5 +34,6 @@ class PeopleSignupTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_template 'people/show'
     assert_not flash.empty?
+    assert is_person_logged_in?
   end
 end

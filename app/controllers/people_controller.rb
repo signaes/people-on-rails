@@ -1,6 +1,6 @@
 class PeopleController < ApplicationController
   def show
-    @person = Person.find params[:id]
+    @person = current_person || Person.find(params[:id])
   end
 
   def new
@@ -11,6 +11,7 @@ class PeopleController < ApplicationController
     @person = Person.new person_params
 
     if @person.save
+      log_in @person
       flash[:success] = I18n.t('signup.success_message')
       redirect_to @person
     else

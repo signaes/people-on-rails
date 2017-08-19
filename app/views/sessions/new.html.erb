@@ -1,0 +1,16 @@
+<h1><%= t('login.title') %></h1>
+
+<%= form_with scope: :session, url: login_path, local: true do |f| %>
+  <%= f.label :email %>
+  <%= f.text_field :email, id: :session_email %>
+
+  <%= f.label :password %>
+  <%= f.text_field :password, type: 'password', id: :session_password %>
+
+  <%= f.submit t('login.submit') %>
+<% end %>
+
+<p>
+  <%= t('login.signup_message') %> <%= link_to t('login.signup_link'), signup_path %>
+</p>
+

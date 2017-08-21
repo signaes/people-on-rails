@@ -9,7 +9,7 @@ class PeopleSignupTest < ActionDispatch::IntegrationTest
     get signup_path
 
     assert_no_difference 'Person.count' do
-      post people_path, params: { person: { name: '',
+      post signup_path, params: { person: { name: '',
                                             email: '',
                                             password: 'ooo',
                                             password_confirmation: 'aaa' } }
@@ -25,7 +25,7 @@ class PeopleSignupTest < ActionDispatch::IntegrationTest
     get signup_path
 
     assert_difference 'Person.count', 1 do
-      post people_path, params: { person: { name: 'Testable',
+      post signup_path, params: { person: { name: 'Testable',
                                             email: 'testable@mail.com',
                                             password: '123456',
                                             password_confirmation: '123456' } }

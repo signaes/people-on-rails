@@ -40,6 +40,7 @@ en:
     title: 'Log in'
     link: 'Log in'
     submit: 'Log in'
+    remember_me: 'Remember me on this browser'
     signup_message: 'New here?'
     signup_link: 'Sign up'
     error_message: 'Invalid email/password combination'

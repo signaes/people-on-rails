@@ -1,5 +1,7 @@
 class PeopleController < ApplicationController
   def show
+    return redirect_to(:root) if !(current_person || params[:id])
+
     @person = current_person || Person.find(params[:id])
   end
 
@@ -13,7 +15,7 @@ class PeopleController < ApplicationController
     if @person.save
       log_in @person
       flash[:success] = I18n.t('signup.success_message')
-      redirect_to @person
+      redirect_to profile_url
     else
       render 'new'
     end

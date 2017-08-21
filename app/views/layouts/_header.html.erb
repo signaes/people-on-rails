@@ -1,5 +1,6 @@
 <% if person_is_logged_in? %>
   <%= link_to t('person.profile.link'), profile_path %>
+  <%= link_to t('person.edit.link'), profile_edit_path %>
   <%= link_to t('logout.link'), logout_path, method: :delete %>
 <% else %>
   <%= link_to t('login.link'), login_path %>

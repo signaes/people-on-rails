@@ -1,0 +1,12 @@
+<% provide :button_text, t('person.edit.commit_message') %>
+
+<h1><%= t('person.edit.title') %></h1>
+
+<%= form_with model: @person, url: profile_edit_path, local: true do |f| %>
+  <%= render 'people/form_fields', f: f %>
+<% end %>
+
+<%= link_to t('person.delete_account.link'),
+            delete_account_path, method: :delete,
+            data: { confirm: t('person.delete_account.confirmation_message') } %>
+

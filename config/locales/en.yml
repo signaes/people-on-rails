@@ -48,5 +48,15 @@ en:
   logout:
     link: 'Log out'
   person:
+    unauthorized_error_message: 'Please log in'
     profile:
       link: 'Profile'
+    edit:
+      title: 'Edit Profile'
+      commit_message: 'Save changes'
+      link: 'Settings'
+      success_message: 'Profile updated'
+    delete_account:
+      link: 'Delete my account'
+      confirmation_message: 'Are you sure? This can’t be undone.'
+      success_message: 'Your account was successfully deleted'

@@ -28,6 +28,7 @@ class PeopleLoginTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?]', signup_path, count: 0
     assert_select 'a[href=?]', logout_path
     assert_select 'a[href=?]', profile_path
+    assert_select 'a[href=?]', profile_edit_path
 
     # send a delete request to the logout_path
     delete logout_path
@@ -42,6 +43,7 @@ class PeopleLoginTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?]', signup_path
     assert_select 'a[href=?]', logout_path,  count: 0
     assert_select 'a[href=?]', profile_path, count: 0
+    assert_select 'a[href=?]', profile_edit_path, count: 0
   end
 
   test 'log in with remember me checked' do

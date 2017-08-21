@@ -4,9 +4,11 @@ class Person < ApplicationRecord
   has_secure_password
 
   validates :name, length: { maximum: 60 }
-  validates :password, length: { minimum: 6 }, presence: true
+
+  password_validation = { length: { minimum: 6 }, presence: true, allow_nil: true }
+  validates :password, password_validation
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
-  validates :password_confirmation, length: { minimum: 6 }, presence: true
   validates :email, presence: true, length: { maximum: 100 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: true

@@ -1,19 +1,7 @@
+<% provide :button_text, t('signup.submit') %>
+
 <h1><%= t('signup.title') %></h1>
 
 <%= form_with model: @person, url: signup_path, local: true do |f| %>
-  <%= render 'shared/error_messages' %>
-
-  <%= f.label :name %>
-  <%= f.text_field :name, id: :person_name %>
-
-  <%= f.label :email %>
-  <%= f.text_field :email, id: :person_email %>
-
-  <%= f.label :password %>
-  <%= f.text_field :password, type: 'password', id: :person_password %>
-
-  <%= f.label :password_confirmation %>
-  <%= f.text_field :password_confirmation, type: 'password', id: :person_password_confirmation %>
-
-  <%= f.submit t('signup.submit') %>
+  <%= render 'people/form_fields', f: f %>
 <% end %>

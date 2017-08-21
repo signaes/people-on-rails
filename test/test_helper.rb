@@ -15,6 +15,10 @@ class ActiveSupport::TestCase
     session[:person_id] = person.id
   end
 
+  def log_out
+    session.delete :person_id
+  end
+
   def clear_database(model)
     model.all.each { |record| record.delete }
   end

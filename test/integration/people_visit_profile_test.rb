@@ -19,10 +19,10 @@ class PeopleVisitProfileTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?]', profile_path
   end
 
-  test 'should be redirected to the homepage if visiting the profile path without being logged in' do
+  test 'should be redirected to the log in page if visiting the profile path without being logged in' do
     get profile_path
 
-    assert_redirected_to root_url
+    assert_redirected_to login_url
     follow_redirect!
     assert_select 'a[href=?]', login_path
     assert_select 'a[href=?]', signup_path

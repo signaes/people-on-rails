@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if @person && @person.authenticate(person_password)
       log_in @person
       remember_me? ? remember(@person) : forget(@person)
-      redirect_to profile_url
+      redirect_back_or profile_url
     else
       flash.now[:danger] = I18n.t('login.error_message')
       render 'new'

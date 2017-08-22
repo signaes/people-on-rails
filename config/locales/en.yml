@@ -35,6 +35,9 @@ en:
     title: 'Sign up'
     link: 'Sign up'
     submit: 'Create my account'
+    activation_message: 'Please check your email to activate your account.'
+    activation_success: 'Account activated!'
+    activation_invalid: 'Invalid activation link'
     success_message: 'You have successfully signed up'
   login:
     title: 'Log in'
@@ -44,6 +47,7 @@ en:
     signup_message: 'New here?'
     signup_link: 'Sign up'
     error_message: 'Invalid email/password combination'
+    pending_activation_message: 'Please activate your account with the activation link sent by email.'
     success_message: 'You have successfully logged in'
   logout:
     link: 'Log out'
@@ -60,3 +64,13 @@ en:
       link: 'Delete my account'
       confirmation_message: 'Are you sure? This can’t be undone.'
       success_message: 'Your account was successfully deleted'
+
+  person_mailer:
+    account_activation:
+      subject: 'Please activate your account'
+      message:
+        plain_text: 'Welcome! Visit the link below to activate your account:'
+        html: 'Welcome! Click on the link below to activate your account:'
+      link: 'Activate your account'
+    password_reset:
+      subject: 'Reset your password'

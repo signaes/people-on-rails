@@ -6,9 +6,15 @@ class SessionsController < ApplicationController
     @person = Person.find_by email: person_email
 
     if @person && @person.authenticate(person_password)
-      log_in @person
-      remember_me? ? remember(@person) : forget(@person)
-      redirect_back_or profile_url
+      if @person.activated?
+        log_in @person
+        remember_me? ? remember(@person) : forget(@person)
+        redirect_back_or profile_url
+      else
+        message = I18n.t('login.pending_activation_message')
+        flash[:warning] = message
+        redirect_to root_url
+      end
     else
       flash.now[:danger] = I18n.t('login.error_message')
       render 'new'

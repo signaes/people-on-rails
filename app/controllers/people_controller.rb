@@ -13,9 +13,9 @@ class PeopleController < ApplicationController
     @person = Person.new person_params
 
     if @person.save
-      log_in @person
-      flash[:success] = I18n.t('signup.success_message')
-      redirect_to profile_url
+      @person.send_account_activation_email
+      flash[:info] = I18n.t('signup.activation_message')
+      redirect_to root_url
     else
       render 'new'
     end

@@ -1,0 +1,5 @@
+<%= @greeting %>
+
+<%= t('person_mailer.account_activation.message.plain_text') %>
+
+<%= edit_account_activation_url(@person.activation_token, email: @person.email) %>

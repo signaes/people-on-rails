@@ -3,6 +3,7 @@ require 'test_helper'
 class PeopleSignupTest < ActionDispatch::IntegrationTest
   def setup
     clear_people
+    ActionMailer::Base.deliveries.clear
   end
 
   test 'should not sign up without email' do
@@ -21,15 +22,30 @@ class PeopleSignupTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test 'should sign up with all the required fields' do
+  test 'valid signup with account activation' do
     get signup_path
 
     assert_difference 'Person.count', 1 do
       post signup_path, params: { person: { name: 'Testable',
                                             email: 'testable@mail.com',
-                                            password: '123456',
-                                            password_confirmation: '123456' } }
+                                            password: 'password',
+                                            password_confirmation: 'password' } }
     end
+
+    assert_equal 1, ActionMailer::Base.deliveries.size
+    person = assigns :person
+    # Try to log in before activation
+    log_in_as person
+    assert_not is_person_logged_in?
+    # Invalid activation token
+    get edit_account_activation_path('invalid token', email: person.email)
+    assert_not is_person_logged_in?
+    # Valid token, wrong email
+    get edit_account_activation_path(person.activation_token, email: 'wrong_email')
+    assert_not is_person_logged_in?
+    # Valid token and email
+    get edit_account_activation_path(person.activation_token, email: person.email)
+    assert person.reload.activated?
 
     follow_redirect!
     assert_template 'people/show'

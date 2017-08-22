@@ -1,5 +1,6 @@
 class Person < ApplicationRecord
-  attr_accessor :remember_token
+  attr_accessor :remember_token, :activation_token
+  before_create :create_activation_digest
   before_save :downcase_email
   has_secure_password
 
@@ -35,15 +36,29 @@ class Person < ApplicationRecord
   end
 
   # Returns true if the given token matches the digest.
-  def authenticated?(remember_token)
-    return false if remember_digest.nil?
+  def authenticated?(attribute, token)
+    digest = send "#{attribute}_digest"
+    return false if digest.nil?
 
-    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+    BCrypt::Password.new(digest).is_password?(token)
+  end
+
+  def activate_account
+    update_columns activated: true, activated_at: Time.zone.now
+  end
+
+  def send_account_activation_email
+    PersonMailer.account_activation(self).deliver_now
   end
 
   private
 
   def downcase_email
     self.email.downcase!
+  end
+
+  def create_activation_digest
+    self.activation_token  = Person.new_token
+    self.activation_digest = Person.digest activation_token
   end
 end

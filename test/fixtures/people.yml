@@ -2,3 +2,5 @@ testable:
   name: Testable
   email: testable@mail.com
   password_digest: <%= Person.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>

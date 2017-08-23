@@ -1,0 +1,8 @@
+<h1><%= t('password_reset.title') %></h1>
+
+<%= form_with url: password_resets_path, local: true do |f| %>
+  <%= f.label :email %>
+  <%= f.text_field :email, id: :session_email %>
+
+  <%= f.submit t('password_reset.submit') %>
+<% end %>

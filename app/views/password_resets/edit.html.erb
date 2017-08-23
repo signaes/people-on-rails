@@ -1,0 +1,12 @@
+<h1><%= t('password_reset.title') %></h1>
+
+<%= form_with model: @person, url: password_reset_path(params[:id]), local: true do |f| %>
+  <%= render 'shared/error_messages' %>
+
+  <%= hidden_field_tag :email, @person.email %>
+
+  <%= render 'people/form_password_fields', f: f %>
+
+  <%= f.submit t('password_reset.submit') %>
+<% end %>
+

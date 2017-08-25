@@ -18,18 +18,23 @@ module SessionsHelper
 
   # Returns the user corresponding to the session or the remember token cookie.
   def current_person
-    return nil if !(session[:person_id] || cookies.signed[:person_id])
+    return nil unless session[:person_id] || cookies.signed[:person_id]
 
     if (person_id = session[:person_id])
       @current_person ||= Person.find_by(id: person_id)
     elsif (person_id = cookies.signed[:person_id])
       person = Person.find_by(id: person_id)
-
-      if person && person.authenticated?(:remember, cookies[:remember_token])
-        log_in person
-        @current_person = person
-      end
+      log_in_if_authenticated person
     end
+  end
+
+  def log_in_if_authenticated(person)
+    return unless person &&
+                  person.authenticated?(:remember,
+                                        cookies[:remember_token])
+
+    log_in person
+    @current_person = person
   end
 
   def person_is_logged_in?

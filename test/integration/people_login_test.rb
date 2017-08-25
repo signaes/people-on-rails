@@ -20,7 +20,7 @@ class PeopleLoginTest < ActionDispatch::IntegrationTest
     get login_path
     post login_path, params: { session: { email: @person.email,
                                           password: 'password' } }
-    assert is_person_logged_in?
+    assert person_logged_in?
     assert_redirected_to profile_url
     follow_redirect!
     assert_template 'people/show'
@@ -32,7 +32,7 @@ class PeopleLoginTest < ActionDispatch::IntegrationTest
 
     # send a delete request to the logout_path
     delete logout_path
-    assert_not is_person_logged_in?
+    assert_not person_logged_in?
     assert_redirected_to root_url
 
     # simulate a user clicking logout in a second browser window.

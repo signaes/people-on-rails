@@ -9,7 +9,7 @@ class PeopleVisitProfileTest < ActionDispatch::IntegrationTest
     get login_path
     post login_path, params: { session: { email: @person.email,
                                           password: 'password' } }
-    assert is_person_logged_in?
+    assert person_logged_in?
     assert_redirected_to profile_url
     follow_redirect!
     assert_template 'people/show'
@@ -19,7 +19,8 @@ class PeopleVisitProfileTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?]', profile_path
   end
 
-  test 'should be redirected to the log in page if visiting the profile path without being logged in' do
+  test 'should be redirected to the log in page
+        if visiting the profile path without being logged in' do
     get profile_path
 
     assert_redirected_to login_url
@@ -30,4 +31,3 @@ class PeopleVisitProfileTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?]', profile_path, count: 0
   end
 end
-

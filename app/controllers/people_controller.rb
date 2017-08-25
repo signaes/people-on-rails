@@ -1,5 +1,6 @@
 class PeopleController < ApplicationController
-  before_action :check_if_person_is_logged_in, only: [:show, :edit, :update, :destroy]
+  before_action :check_if_person_is_logged_in,
+                only: [:show, :edit, :update, :destroy]
   before_action :find_person, only: [:show, :edit, :update, :destroy]
 
   def show
@@ -53,10 +54,10 @@ class PeopleController < ApplicationController
   # Before filters
 
   def check_if_person_is_logged_in
-    unless person_is_logged_in?
-      store_location
-      flash[:danger] = I18n.t('person.unauthorized_error_message')
-      redirect_to login_url
-    end
+    return if person_is_logged_in?
+
+    store_location
+    flash[:danger] = I18n.t('person.unauthorized_error_message')
+    redirect_to login_url
   end
 end

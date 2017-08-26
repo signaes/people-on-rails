@@ -18,7 +18,7 @@ class PeopleSignupTest < ActionDispatch::IntegrationTest
 
     assert_template 'people/new'
     assert_select 'body' do |content|
-      assert_match(/Email can't be blank/, content.to_s)
+      assert_match(I18n.t('errors.messages.blank'), content.to_s)
     end
   end
 

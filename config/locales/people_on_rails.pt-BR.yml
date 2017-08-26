@@ -1,0 +1,68 @@
+pt-BR:
+  form:
+    name: 'Nome'
+    email: 'Email'
+    password: 'Senha'
+    password_confirmation: 'Confirmação de senha'
+  signup:
+    title: 'Sign up'
+    link: 'Sign up'
+    submit: 'Criar minha conta'
+    activation_message: 'Por favor verifique seu email para ativar sua conta.'
+    activation_success: 'Conta ativada!'
+    activation_invalid: 'Link de ativação inválido'
+    success_message: 'Você se inscreveu com sucesso'
+  login:
+    title: 'Log in'
+    link: 'Log in'
+    submit: 'Log in'
+    remember_me: 'Lembrar de mim nesse browser'
+    signup_message: 'Novo aqui?'
+    signup_link: 'Sign up'
+    error_message: 'Combinação de email/senha inválida'
+    pending_activation_message: 'Por favor ative sua conta com o link de ativação enviado por email.'
+    success_message: 'Você fez log in com sucesso'
+    forgot_password: 'Esqueceu sua senha?'
+  logout:
+    link: 'Log out'
+  password_reset:
+    title: 'Esqueci a senha'
+    submit: 'Send'
+    email_sent: 'Email enviado com instruções para resetar a senha'
+    email_not_found: 'Endereço de email não encontrado'
+    expired_token: 'Token para nova senha expirado.'
+    success_message: 'Sua senha foi alterada com sucesso.'
+
+  errors:
+    empty_password: 'A senha não pode estar em branco.'
+
+  person:
+    unauthorized_error_message: 'Por favor faça o log in'
+    profile:
+      link: 'Perfil'
+    edit:
+      title: 'Editar Perfil'
+      commit_message: 'Salvar alterações'
+      link: 'Ajustes'
+      success_message: 'Perfil atualizado'
+    delete_account:
+      link: 'Deletar minha conta'
+      confirmation_message: 'Tem certeza? Essa ação não pode ser desfeita.'
+      success_message: 'Sua conta foi deletada com sucesso'
+
+  person_mailer:
+    account_activation:
+      subject: 'Por favor ative sua conta'
+      message:
+        plain_text: 'Bem vindo! Visite o link abaixo para ativar sua conta:'
+        html: 'Bem vindo! Clique no link abaixo para ativar sua conta:'
+      link: 'Ativar sua conta'
+    password_reset:
+      subject: 'Redefinição de senha'
+      message:
+        plain_text: 'Visite o link abaixo para redefinir sua senha:'
+        html: 'Clique no link abaixo para redefinir sua senha:'
+        link_expiration: 'Esse link expirará em duas horas'
+        if_did_not_request: 'Se você não pediu para redefinir sua senha, por favor ignore esse email e sua senha continuará como está.'
+      link: 'Redefina sua senha'
+

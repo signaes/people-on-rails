@@ -4,11 +4,8 @@ class ApplicationController < ActionController::Base
 
   include SessionsHelper
 
-  def locale
-    @locale = params[:locale] || I18n.default_locale
-  end
-
   def set_locale
+    find_locale
     return if @locale == I18n.default_locale
     return unless locale_available?
 
@@ -18,10 +15,22 @@ class ApplicationController < ActionController::Base
   def default_url_options
     return {} if I18n.locale == I18n.default_locale
 
-    { locale: I18.locale }
+    { locale: I18n.locale }
   end
 
   private
+
+  def find_locale
+    @locale = params[:locale] ||
+              extract_locale_from_accept_language_header ||
+              I18n.default_locale
+  end
+
+  def extract_locale_from_accept_language_header
+    request.env['HTTP_ACCEPT_LANGUAGE']
+           .try(:scan, /^[a-z]{2}/)
+           .try(:first)
+  end
 
   def available_locales
     I18n.available_locales.map(&:to_s)

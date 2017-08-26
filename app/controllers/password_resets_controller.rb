@@ -10,9 +10,7 @@ class PasswordResetsController < ApplicationController
   end
 
   def create
-    @person = Person.find_by(
-      email: params[:password_reset][:email].try(:downcase)
-    )
+    @person = Person.find_by email: submited_email
 
     if @person
       setup_reset
@@ -33,6 +31,10 @@ class PasswordResetsController < ApplicationController
   end
 
   private
+
+  def submited_email
+    params[:password_reset][:email].try(:downcase)
+  end
 
   def setup_reset
     @person.create_reset_digest

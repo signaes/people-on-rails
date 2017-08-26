@@ -62,7 +62,7 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
                     person: { password: '',
                               password_confirmation: '' } }
     assert_select 'body' do |content|
-      assert_match(/can’t be empty/, content.to_s)
+      assert_match(I18n.t('errors.empty_password'), content.to_s)
     end
   end
 

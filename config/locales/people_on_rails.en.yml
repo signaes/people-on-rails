@@ -1,0 +1,67 @@
+en:
+  form:
+    name: 'Name'
+    email: 'Email'
+    password: 'Password'
+    password_confirmation: 'Password confirmation'
+  signup:
+    title: 'Sign up'
+    link: 'Sign up'
+    submit: 'Create my account'
+    activation_message: 'Please check your email to activate your account.'
+    activation_success: 'Account activated!'
+    activation_invalid: 'Invalid activation link'
+    success_message: 'You have successfully signed up'
+  login:
+    title: 'Log in'
+    link: 'Log in'
+    submit: 'Log in'
+    remember_me: 'Remember me on this browser'
+    signup_message: 'New here?'
+    signup_link: 'Sign up'
+    error_message: 'Invalid email/password combination'
+    pending_activation_message: 'Please activate your account with the activation link sent by email.'
+    success_message: 'You have successfully logged in'
+    forgot_password: 'Forgot your password?'
+  logout:
+    link: 'Log out'
+  password_reset:
+    title: 'Forgot password'
+    submit: 'Send'
+    email_sent: 'Email sent with password reset instructions'
+    email_not_found: 'Email address not found'
+    expired_token: 'Password reset has expired.'
+    success_message: 'Your password has been successfully reset.'
+
+  errors:
+    empty_password: 'The password can’t be empty.'
+
+  person:
+    unauthorized_error_message: 'Please log in'
+    profile:
+      link: 'Profile'
+    edit:
+      title: 'Edit Profile'
+      commit_message: 'Save changes'
+      link: 'Settings'
+      success_message: 'Profile updated'
+    delete_account:
+      link: 'Delete my account'
+      confirmation_message: 'Are you sure? This can’t be undone.'
+      success_message: 'Your account was successfully deleted'
+
+  person_mailer:
+    account_activation:
+      subject: 'Please activate your account'
+      message:
+        plain_text: 'Welcome! Visit the link below to activate your account:'
+        html: 'Welcome! Click on the link below to activate your account:'
+      link: 'Activate your account'
+    password_reset:
+      subject: 'Reset your password'
+      message:
+        plain_text: 'Visit the link below to reset your password:'
+        html: 'Click on the link below to reset your password:'
+        link_expiration: 'This link will expire in two hours'
+        if_did_not_request: 'If you did not request your password to be reset, please ignore this email and your password will stay as it is.'
+      link: 'Reset your password'

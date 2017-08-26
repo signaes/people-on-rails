@@ -1,0 +1,18 @@
+en:
+  activerecord:
+    models:
+      person: 'Person'
+    attributes:
+      person:
+        name: 'Name'
+        email: 'Email'
+        password: 'Password'
+        password_confirmation: 'Password confirmation'
+    errors:
+      models:
+        person:
+          attributes:
+            name: 'Name'
+            password: 'Password'
+            password_confirmation: 'Password confirmation'
+
